@@ -26,11 +26,11 @@
 </template>
 
 <script>
-  import Race from './Race'
-  import Alignment from './Alignment'
-  import Class from './Class'
-  import Level from './Level'
-  import Background from './Background'
+  import Race from './CharacterDescription/Race'
+  import Alignment from './CharacterDescription/Alignment'
+  import Class from './CharacterDescription/Class'
+  import Level from './CharacterDescription/Level'
+  import Background from './CharacterDescription/Background'
 
   export default {
     name: 'character-description',

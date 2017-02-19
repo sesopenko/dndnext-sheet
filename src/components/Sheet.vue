@@ -1,9 +1,14 @@
 <template>
-  <character-description></character-description>
+  <div class="sheet">
+    <character-description></character-description>
+    <abilities></abilities>
+  </div>
+
 </template>
 
 <script>
   import CharacterDescription from './CharacterDescription'
+  import Abilities from './Abilities'
 
   export default {
     name: 'sheet',
@@ -13,7 +18,8 @@
       }
     },
     components: {
-      CharacterDescription
+      CharacterDescription,
+      Abilities
     }
   }
 </script>
