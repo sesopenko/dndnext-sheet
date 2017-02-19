@@ -41,7 +41,9 @@
         this.other = true
       },
       chooseStandard: function () {
-        this.selected = ''
+        if (this.options.indexOf(this.selected) === -1) {
+          this.selected = ''
+        }
         this.other = false
       }
     }
