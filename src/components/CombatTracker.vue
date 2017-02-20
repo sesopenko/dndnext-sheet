@@ -124,6 +124,14 @@
       participants: {
         type: Object,
         default: []
+      },
+      currentTurn: {
+        type: Number,
+        default: 0
+      },
+      round: {
+        type: Number,
+        default: 1
       }
     },
     data () {
@@ -202,9 +210,13 @@
       },
       saveParticipants: function () {
         this.$localStorage.set('participants', this.participants)
+        this.$localStorage.set('currentTurn', this.currentTurn)
+        this.$localStorage.set('round', this.round)
       },
       loadParticipants: function () {
         this.participants = this.$localStorage.get('participants')
+        this.currentTurn = this.$localStorage.get('currentTurn')
+        this.round = this.$localStorage.get('round')
       }
     },
     components: {
