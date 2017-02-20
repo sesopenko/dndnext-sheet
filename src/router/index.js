@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
+      name: 'D&D Next Webtools Homepage',
       component: Hello
     },
     {

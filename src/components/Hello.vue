@@ -1,22 +1,28 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div>
+    <div class="page-header">
+      <h1><a href="#/">D&D Next Webtools</a></h1>
+    </div>
+    <div>
+      <h2>
+        About
+      </h2>
+      <p>
+        These are free tools I've created to run my own <a href="http://dnd.wizards.com/">D&D 5th Edition</a> campaign.  You can view my gaming blog at <a href="http://fromthetabletop.net">fromthetabletop.net</a>.
+      </p>
+    </div>
+    <div>
+      <h2>Tools</h2>
+      <p>
+        The following tools are for running sessions of Dungeons and Dragons 5th edition.
+      </p>
+      <div class="list-group">
+        <a class="list-group-item" href="#/combat">Combat Tracker</a>
+      </div>
+    </div>
+    <div>
+      <em>&copy; 2017 Sean Esopenko, all rights reserved</em>
+    </div>
   </div>
 </template>
 
@@ -25,7 +31,6 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
@@ -33,21 +38,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

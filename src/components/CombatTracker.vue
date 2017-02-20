@@ -1,9 +1,10 @@
 <template>
   <div class="combat-tracker">
     <div class="page-header">
-      <h1>Combat Tracker</h1>
-    </div>
+      <h1><a href="#/">D&D Next Webtools</a></h1>
 
+    </div>
+    <h2>Combat Tracker</h2>
     <div class="participants panel panel-default">
       <div class="panel-heading">
         Participants
@@ -107,10 +108,18 @@
                      @name="participant.name = $event"
                      @hp="participant.hp = $event"
                      @delete="deleteParticipant(index)"></participant>
+        <tr v-if="participants.length === 0">
+          <td colspan="4">
+            <em>Press the <span class="glyphicon glyphicon-plus"></span> symbol above to add your first combat participant.</em>
+          </td>
+        </tr>
         </tbody>
 
       </table>
 
+    </div>
+    <div>
+      <em>&copy; 2017 Sean Esopenko, all rights reserved</em>
     </div>
   </div>
 </template>
