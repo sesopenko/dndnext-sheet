@@ -20,20 +20,62 @@
             <span>Turn:</span>
             <div class="btn-group">
               <button class="btn btn-default"
-                      aria-label="Advance turn forward"
+                      aria-label="Reverse turn backward"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Reverse turn backward"
                       @click="previousTurn"><span class="glyphicon glyphicon-backward"></span></button>
               <button class="btn btn-default"
-                      aria-label="Reverse turn backwards"
+                      aria-label="Advance turn forward"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Advance turn forward"
                       @click="nextTurn"><span class="glyphicon glyphicon-forward"></span></button>
             </div>
             <div class="btn-group">
               <button class="btn btn-default"
                       aria-label="Add participant to combat"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Add participant to combat"
                       @click="addParticipant"><span class="glyphicon glyphicon-plus"></span></button>
               <button class="btn btn-default"
                       aria-label="Sort participants by initiative"
-                      @click="sortParticipants"><span class="glyphicon glyphicon-sort"></span></button>
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Sort participants by initiative"
+                      @click="sortParticipants">
+                <span class="glyphicon glyphicon-sort"></span>
+              </button>
             </div>
+            <div class="btn-group">
+
+              <button class="btn btn-default"
+                      @click="saveParticipants"
+                      aria-label="Save Combat"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Save Combat">
+                <span class="glyphicon glyphicon-floppy-save"></span>
+              </button>
+              <button class="btn btn-default"
+                      @click="loadParticipants"
+                      aria-label="Load Combat"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Load Combat">
+                <span class="glyphicon glyphicon-floppy-open"></span>
+              </button>
+              <button class="btn btn-danger"
+                      aria-label="Delete all participants"
+                      @click="clearParticipants"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Delete all participants">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </div>
+
           </div>
 
         </div>
@@ -78,6 +120,12 @@
 
   export default {
     name: 'combat-tracker',
+    localStorage: {
+      participants: {
+        type: Object,
+        default: []
+      }
+    },
     data () {
       return {
         participants: [],
@@ -147,10 +195,33 @@
       deleteParticipant: function (participantIndex) {
         console.log('index:', participantIndex)
         this.participants.splice(participantIndex, 1)
+      },
+      clearParticipants: function () {
+        let numParticipants = this.participants.length
+        this.participants.splice(0, numParticipants)
+      },
+      saveParticipants: function () {
+        this.$localStorage.set('participants', this.participants)
+      },
+      loadParticipants: function () {
+        this.participants = this.$localStorage.get('participants')
       }
     },
     components: {
       Participant
+    },
+    created: function () {
+      this.$nextTick(function () {
+        let $el = window.$('[data-toggle="tooltip"]', this.$el)
+        $el.tooltip({
+          container: 'body',
+          trigger: 'hover',
+          delay: {
+            'show': 500,
+            'hide': 100
+          }
+        })
+      })
     }
   }
 </script>
