@@ -53,6 +53,11 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('node_modules/bootstrap/dist/js')]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         query: {

@@ -1,45 +1,83 @@
 <template>
   <tr class="participant" :class="{ active: hasTurn }">
-    <td>
+    <td class="col-md-1" :class="{'has-error': errors.has('initiative')}">
       <template v-if="locked">
         {{ initiative }}
       </template>
       <template v-else>
-        <input ref="initiative"
+        <input class="form-control"
+               ref="initiative"
+               name="initiative"
                :value="initiative"
-               @input="updateInitiative($event.target.value)">
+               aria-label="initiative"
+               @input="updateInitiative($event.target.value)"
+               type="number"
+               min="1"
+               v-validate="'required|numeric'">
       </template>
 
     </td>
-    <td>
+    <td class="col-md-3">
       <template v-if="locked">
         {{ name }}
       </template>
       <template v-else>
-        <input ref="name"
+        <input class="form-control" ref="name"
                :value="name"
+               aria-label="participant name"
                @input="updateName($event.target.value)">
       </template>
     </td>
-    <td>
+    <td class="col-md-6"
+        :class="{'has-error': errors.has('hp-value')}">
       <template v-if="locked">
-        {{ hp }}
-        <input ref="modifyHp" placeholder="Modify HP">
-        <button @click="addHp">+</button>
-        <button @click="subtractHp">-</button>
+        <div class="input-group">
+          <span class="input-group-addon" aria-label="Participant hitpoints" aria-live="polite">{{ hp }}</span>
+          <input class="form-control"
+                 ref="modifyHp"
+                 aria-label="Modification to participant's hitpoints.  Press enter to subtract the modification or tab to reach modification actions"
+                 placeholder="Modify HP"
+                 @keyup.enter="subtractHp"
+                 type="number">
+          <div class="input-group-btn" role="group">
+            <button class="btn btn-default"
+                    aria-label="subtract modifier from hit points"
+                    @click="subtractHp"><span class="glyphicon glyphicon-minus"></span></button>
+            <button class="btn btn-default"
+                    aria-label="add modifier to hit points"
+                    @click="addHp"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
       </template>
       <template v-else>
-        <input ref="hp" :value="hp" @input="updateHp($event.target.value)">
+        <input class="form-control"
+               type="number"
+               aria-label="participant hitpoints"
+               name="hp-value"
+               ref="hp"
+               :value="hp"
+               v-validate="'numeric'"
+               @input="updateHp($event.target.value)">
       </template>
 
     </td>
-    <td>
-      <template v-if="locked">
-        <button @click="unlock">Unlock</button>
-      </template>
-      <template v-else>
-        <button @click="lock">Lock</button>
-      </template>
+    <td class="col-md-2">
+      <div class="btn-group">
+        <button type="button"
+                class="btn btn-default"
+                :aria-label="lockLabel"
+                :class="{ active: locked }"
+                autocomplete="off"
+                @click="toggleLock">
+          <span class="glyphicon glyphicon-lock"></span>
+        </button>
+        <button class="btn btn-default" aria-label="Delete participant.  Must press twice to perform." @click="triggerDelete">
+          <span class="glyphicon glyphicon-trash">
+          </span>
+          <template v-if="deleting">Press Again</template>
+        </button>
+      </div>
+
     </td>
   </tr>
 </template>
@@ -67,23 +105,35 @@
     },
     data () {
       return {
-        locked: false
+        locked: false,
+        deleting: false
+      }
+    },
+    computed: {
+      lockLabel: function () {
+        if (this.locked) {
+          return 'Unlock the participant.  Participant is currently locked.'
+        } else {
+          return 'Lock the participant.  Participant is currently unlocked.'
+        }
       }
     },
     methods: {
       updateInitiative: function (initiative) {
-        console.log('initiative:', initiative)
         this.$refs.initiative.value = initiative
-        this.$emit('initiative', Number(initiative))
+        if (!isNaN(parseInt(initiative))) {
+          this.$emit('initiative', Number(initiative))
+        }
       },
       updateName: function (name) {
         this.$refs.name.value = name
         this.$emit('name', String(name))
       },
       updateHp: function (hp) {
-        console.log('this.$refs.hp:', this.$refs.hp)
-        // this.$refs.hp.value = hp
-        this.$emit('hp', Number(hp))
+        this.$refs.hp.value = hp
+        if (!isNaN(Number(hp))) {
+          this.$emit('hp', Number(hp))
+        }
       },
       addHp: function () {
         let addition = Number(this.$refs.modifyHp.value)
@@ -103,18 +153,27 @@
         this.$refs.modifyHp.value = ''
         this.$emit('hp', newHp)
       },
-      lock: function () {
-        this.locked = true
+      toggleLock: function () {
+        this.locked = !this.locked
       },
-      unlock: function () {
-        this.locked = false
+      triggerDelete: function () {
+        if (this.deleting) {
+          this.deleting = false
+          this.$emit('delete')
+        } else {
+          this.deleting = true
+          let self = this
+          setTimeout(function () {
+            self.deleting = false
+          }, 2000)
+        }
       }
     }
   }
 </script>
 
 <style>
-  tr.participant.active td{
-    border: 1px solid black;
+  input::-ms-clear {
+    display: none;
   }
 </style>
