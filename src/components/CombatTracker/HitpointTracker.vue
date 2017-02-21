@@ -2,7 +2,7 @@
   <div class="hp-tracker" :class="{'has-error': errors.has('hp-value')}">
     <template v-if="locked">
       <div class="input-group">
-        <span class="input-group-addon" aria-label="Participant hitpoints" aria-live="polite">{{ hp }}</span>
+        <span class="input-group-addon" aria-label="Participant hitpoints" aria-live="polite">{{ isNaN(parseInt(hp)) ? 'invalid' : hp }}</span>
         <input class="form-control"
                ref="modifyHp"
                aria-label="Modification to participant's hitpoints.  Press enter to subtract the modification or tab to reach modification actions"
@@ -10,8 +10,7 @@
                data-placement="top"
                title="Modification to participant's hitpoints"
                placeholder="Modify HP"
-               @keyup.enter="subtractHp"
-               type="number">
+               @keyup.enter="subtractHp">
         <div class="input-group-btn" role="group">
           <button class="btn btn-default"
                   name="subtract"
@@ -32,12 +31,14 @@
     </template>
     <template v-else>
       <input class="form-control"
-             type="number"
-             aria-label="participant hitpoints"
+             aria-label="Participant hitpoints"
              name="hp-value"
              ref="hp"
              :value="hp"
              v-validate="'numeric'"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="Participant hitpoints"
              @input="updateHp($event.target.value)">
     </template>
   </div>
@@ -48,8 +49,8 @@
     name: 'hitpointtracker',
     props: {
       hp: {
-        type: Number,
-        default: 0
+        type: [Number, String],
+        default: ''
       },
       locked: {
         type: Boolean,
@@ -62,13 +63,11 @@
     methods: {
       updateHp: function (hp) {
         this.$refs.hp.value = hp
-        if (!isNaN(Number(hp))) {
-          this.$emit('hp', Number(hp))
-        }
+        this.$emit('hp', hp)
       },
       addHp: function () {
         let addition = Number(this.$refs.modifyHp.value)
-        if (isNaN(addition)) {
+        if (isNaN(addition) || isNaN(parseInt(this.hp))) {
           return
         }
         let newHp = Number(this.hp) + addition
@@ -77,7 +76,7 @@
       },
       subtractHp: function () {
         let subtraction = Number(this.$refs.modifyHp.value)
-        if (isNaN(subtraction)) {
+        if (isNaN(subtraction) || isNaN(parseInt(this.hp))) {
           return
         }
         let newHp = Number(this.hp) - subtraction

@@ -9,9 +9,12 @@
                ref="initiative"
                name="initiative"
                :value="initiative"
-               aria-label="initiative"
+               aria-label="Initiative"
                @input="updateInitiative($event.target.value)"
                min="1"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Initiative"
                v-validate="'numeric|required'">
       </template>
 
@@ -23,7 +26,10 @@
       <template v-else>
         <input class="form-control" ref="name"
                :value="name"
-               aria-label="participant name"
+               aria-label="Character Name"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Character Name"
                @input="updateName($event.target.value)">
       </template>
     </td>
@@ -43,7 +49,7 @@
                 @click="toggleLock"
                 data-toggle="tooltip"
                 data-placement="top"
-                :title="lockLabel">
+                title="Lock / Unlock participant">
           <span class="glyphicon glyphicon-lock"></span>
         </button>
         <button class="btn btn-danger"
@@ -76,8 +82,8 @@
         required: true
       },
       hp: {
-        type: Number,
-        required: true
+        type: [Number, String],
+        required: false
       },
       hasTurn: {
         type: Boolean,
@@ -111,9 +117,7 @@
         this.$emit('name', String(name))
       },
       updateHp: function (hp) {
-        if (!isNaN(Number(hp))) {
-          this.$emit('hp', Number(hp))
-        }
+        this.$emit('hp', hp)
       },
       toggleLock: function () {
         this.locked = !this.locked

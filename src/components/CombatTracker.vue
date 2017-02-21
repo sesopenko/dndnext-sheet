@@ -164,7 +164,7 @@
         this.participants.push({
           initiative: '',
           name: 'new participant',
-          hp: 5,
+          hp: '',
           hasTurn: false
         })
         this.refreshCurrentParticipantTurn()
