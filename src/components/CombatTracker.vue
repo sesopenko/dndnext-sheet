@@ -171,9 +171,13 @@
       },
       sortParticipants: function () {
         this.participants.sort(function (a, b) {
-          if (!isNaN(Number(a)) && isNaN(Number(b)) || a.initiative > b.initiative) {
+          if (!isNaN(parseInt(a.initiative)) && isNaN(parseInt(b.initiative))) {
             return -1
-          } else if (isNaN(Number(a)) && !isNaN(Number(b)) || a.initiative < b.initiative) {
+          } else if (isNaN(parseInt(a.initiative)) && !isNaN(parseInt(b.initiative))) {
+            return 1
+          } else if (a.initiative > b.initiative) {
+            return -1
+          } else if (a.initiative < b.initiative) {
             return 1
           } else {
             return 0
