@@ -11,9 +11,8 @@
                :value="initiative"
                aria-label="initiative"
                @input="updateInitiative($event.target.value)"
-               type="number"
                min="1"
-               v-validate="'required|numeric'">
+               v-validate="'numeric|required'">
       </template>
 
     </td>
@@ -69,8 +68,8 @@
     name: 'participant',
     props: {
       initiative: {
-        type: Number,
-        required: true
+        type: [Number, String],
+        required: false
       },
       name: {
         type: String,
@@ -102,10 +101,10 @@
     },
     methods: {
       updateInitiative: function (initiative) {
+        console.log('new initiative:', initiative)
+        console.log(initiative)
         this.$refs.initiative.value = initiative
-        if (!isNaN(parseInt(initiative))) {
-          this.$emit('initiative', Number(initiative))
-        }
+        this.$emit('initiative', initiative)
       },
       updateName: function (name) {
         this.$refs.name.value = name

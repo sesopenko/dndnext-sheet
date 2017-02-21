@@ -162,7 +162,7 @@
     methods: {
       addParticipant: function () {
         this.participants.push({
-          initiative: 10,
+          initiative: '',
           name: 'new participant',
           hp: 5,
           hasTurn: false
@@ -171,9 +171,9 @@
       },
       sortParticipants: function () {
         this.participants.sort(function (a, b) {
-          if (a.initiative > b.initiative) {
+          if (!isNaN(Number(a)) && isNaN(Number(b)) || a.initiative > b.initiative) {
             return -1
-          } else if (a.initiative < b.initiative) {
+          } else if (isNaN(Number(a)) && !isNaN(Number(b)) || a.initiative < b.initiative) {
             return 1
           } else {
             return 0
