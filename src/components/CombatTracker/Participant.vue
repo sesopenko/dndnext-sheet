@@ -2,7 +2,7 @@
   <tr class="participant" :class="{ active: hasTurn }">
     <td class="col-md-1" :class="{'has-error': errors.has('initiative')}">
       <template v-if="locked">
-        {{ initiative }}
+        {{ isNaN(parseInt(initiative)) ? 'invalid' : initiative }}
       </template>
       <template v-else>
         <input class="form-control"
