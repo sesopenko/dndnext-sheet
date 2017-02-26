@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-header">
-      <h1><a href="#/">D&D Next Webtools</a></h1>
+      <h1><a href="#/">D&D Next Sheet</a></h1>
     </div>
     <div>
       <h2>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div>
-      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/images/ccbysa_80x15.png" /></a><br />All content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License by Sean Esopenko</a>.
+      <a href="#/license">Licensed under GNU GPL V3.0</a>
     </div>
   </div>
 </template>

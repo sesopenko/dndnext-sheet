@@ -1,6 +1,6 @@
 # dndnext-sheet
 
-> D&D 5th edition character sheet
+> Dungeons and Dragons 5th edition character sheet
 
 ## Build Setup
 
@@ -28,3 +28,18 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## License
+
+dndnext-sheet is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+              
+dndnext-sheet is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+              
+You should have received a copy of the GNU General Public License
+along with dndnext-sheet.  If not, see <http://www.gnu.org/licenses/>.
