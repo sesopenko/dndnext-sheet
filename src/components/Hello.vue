@@ -18,10 +18,11 @@
       </p>
       <div class="list-group">
         <a class="list-group-item" href="#/combat">Combat Tracker</a>
+        <a class="list-group-item" href="#/spells">Spells</a>
       </div>
     </div>
     <div>
-      <em>&copy; 2017 Sean Esopenko, all rights reserved</em>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/images/ccbysa_80x15.png" /></a><br />All content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License by Sean Esopenko</a>.
     </div>
   </div>
 </template>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from 'components/Hello'
 import Sheet from 'components/Sheet'
 import CombatTracker from 'components/CombatTracker'
+import Spells from 'components/Spells'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/combat',
       name: 'Combat Tracker',
       component: CombatTracker
+    },
+    {
+      path: '/spells',
+      name: 'Spells',
+      component: Spells
     }
   ]
 })
