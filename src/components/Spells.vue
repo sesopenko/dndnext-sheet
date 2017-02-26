@@ -29,7 +29,7 @@
         <a href="http://www.opengamingfoundation.org/ogl.html" arget="_blank">Open Game License v1.0a Copyright 2000, Wizards of the Coast, Inc</a>
       </p>
       <p>
-        <a href="The spell list, in JSON format, was compiled from the SRD by Vorpalhex." target="_blank">The spell list, in JSON format</a>, was compiled from the SRD by Vorpalhex. The spells are content from the SRD and is restricted and covered by the OGL.  When using said content, please make sure to conform appropriately with the proper licenses.
+        <a href="https://github.com/vorpalhex/srd_spells" target="_blank">The spell list, in JSON format</a>, was compiled from the SRD by Vorpalhex. The spells are content from the SRD and is restricted and covered by the OGL.  When using said content, please make sure to conform appropriately with the proper licenses.
       </p>
       <p>
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/static/images/ccbysa_80x15.png" /></a><br />All other content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License by Sean Esopenko</a>.
