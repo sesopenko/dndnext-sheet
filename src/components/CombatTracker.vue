@@ -171,13 +171,15 @@
       },
       sortParticipants: function () {
         this.participants.sort(function (a, b) {
-          if (!isNaN(parseInt(a.initiative)) && isNaN(parseInt(b.initiative))) {
+          var aInitiative = parseInt(a.initiative, 10)
+          var bInitiative = parseInt(b.initiative, 10)
+          if (!isNaN(aInitiative) && isNaN(bInitiative)) {
             return -1
-          } else if (isNaN(parseInt(a.initiative)) && !isNaN(parseInt(b.initiative))) {
+          } else if (isNaN(aInitiative) && !isNaN(bInitiative)) {
             return 1
-          } else if (a.initiative > b.initiative) {
+          } else if (aInitiative > bInitiative) {
             return -1
-          } else if (a.initiative < b.initiative) {
+          } else if (aInitiative < bInitiative) {
             return 1
           } else {
             return 0
