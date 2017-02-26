@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from 'components/Hello'
+import Home from 'components/Home'
 import Sheet from 'components/Sheet'
 import CombatTracker from 'components/CombatTracker'
 import Spells from 'components/Spells'
@@ -12,7 +12,7 @@ export default new Router({
     {
       path: '/',
       name: 'D&D Next Webtools Homepage',
-      component: Hello
+      component: Home
     },
     {
       path: '/sheet',
