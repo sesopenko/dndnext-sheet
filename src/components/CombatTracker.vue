@@ -34,22 +34,6 @@
                       @click="nextTurn"><span class="glyphicon glyphicon-forward"></span></button>
             </div>
             <div class="btn-group">
-              <button class="btn btn-default"
-                      aria-label="Add participant to combat"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Add participant to combat"
-                      @click="addParticipant"><span class="glyphicon glyphicon-plus"></span></button>
-              <button class="btn btn-default"
-                      aria-label="Sort participants by initiative"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Sort participants by initiative"
-                      @click="sortParticipants">
-                <span class="glyphicon glyphicon-sort"></span>
-              </button>
-            </div>
-            <div class="btn-group">
 
               <button class="btn btn-default"
                       @click="saveParticipants"
@@ -81,6 +65,9 @@
 
         </div>
       </div>
+      <participant-creator
+        @add="addParticipant($event)"
+      ></participant-creator>
       <table class="participants-list table">
         <thead>
         <tr>
@@ -126,6 +113,7 @@
 
 <script>
   import Participant from './CombatTracker/Participant'
+  import ParticipantCreator from './CombatTracker/ParticipantCreator'
 
   export default {
     name: 'combat-tracker',
@@ -160,11 +148,11 @@
       }
     },
     methods: {
-      addParticipant: function () {
+      addParticipant: function (participant) {
         this.participants.push({
-          initiative: '',
-          name: 'new participant',
-          hp: '',
+          initiative: participant.initiative,
+          name: participant.name,
+          hp: participant.hp,
           hasTurn: false
         })
         this.refreshCurrentParticipantTurn()
@@ -206,7 +194,6 @@
         this.refreshCurrentParticipantTurn()
       },
       refreshCurrentParticipantTurn: function () {
-        console.log('currentTurn', this.currentTurn)
         for (let i = 0; i < this.participants.length; i++) {
           if (i === this.currentTurn) {
             this.participants[i].hasTurn = true
@@ -216,8 +203,8 @@
         }
       },
       deleteParticipant: function (participantIndex) {
-        console.log('index:', participantIndex)
         this.participants.splice(participantIndex, 1)
+        this.refreshCurrentParticipantTurn()
       },
       clearParticipants: function () {
         let numParticipants = this.participants.length
@@ -235,7 +222,8 @@
       }
     },
     components: {
-      Participant
+      Participant,
+      ParticipantCreator
     },
     created: function () {
       this.$nextTick(function () {

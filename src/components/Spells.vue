@@ -51,11 +51,7 @@
     created: function () {
       // populate available
       this.$http.get('/static/data/spells.json').then(response => {
-        console.log('status:', response.status)
-        console.log(typeof response.status)
         if (response.status === 200) {
-          console.log('got spells:', response.body)
-
           this.available = response.body
         }
       }, response => {
@@ -71,7 +67,6 @@
         let filtered = this.available.filter(function (spell) {
           return spell.name.toLowerCase().includes(searchString)
         })
-        console.log('filtered:', filtered)
         return filtered
       }
     }

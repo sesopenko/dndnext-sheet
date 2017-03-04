@@ -1,57 +1,18 @@
 <template>
   <tr class="participant" :class="{ active: hasTurn }">
     <td class="col-md-1" :class="{'has-error': errors.has('initiative')}">
-      <template v-if="locked">
-        {{ isNaN(parseInt(initiative)) ? 'invalid' : initiative }}
-      </template>
-      <template v-else>
-        <input class="form-control"
-               ref="initiative"
-               name="initiative"
-               :value="initiative"
-               aria-label="Initiative"
-               @input="updateInitiative($event.target.value)"
-               min="1"
-               data-toggle="tooltip"
-               data-placement="top"
-               title="Initiative"
-               v-validate="'numeric|required'">
-      </template>
-
+      {{ isNaN(parseInt(initiative)) ? 'invalid' : initiative }}
     </td>
     <td class="col-md-3">
-      <template v-if="locked">
-        {{ name }}
-      </template>
-      <template v-else>
-        <input class="form-control" ref="name"
-               :value="name"
-               aria-label="Character Name"
-               data-toggle="tooltip"
-               data-placement="top"
-               title="Character Name"
-               @input="updateName($event.target.value)">
-      </template>
+      {{ name }}
     </td>
     <td class="col-md-6">
       <hitpoint-tracker
         :hp="hp"
-        :locked="locked"
         @hp="updateHp"></hitpoint-tracker>
     </td>
     <td class="col-md-2">
       <div class="btn-group">
-        <button type="button"
-                class="btn btn-default"
-                :aria-label="lockLabel"
-                :class="{ active: locked }"
-                autocomplete="off"
-                @click="toggleLock"
-                data-toggle="tooltip"
-                data-placement="top"
-                title="Lock / Unlock participant">
-          <span class="glyphicon glyphicon-lock"></span>
-        </button>
         <button class="btn btn-danger"
                 aria-label="Delete participant.  Must press twice to perform."
                 data-toggle="tooltip"
@@ -92,23 +53,11 @@
     },
     data () {
       return {
-        locked: false,
         deleting: false
-      }
-    },
-    computed: {
-      lockLabel: function () {
-        if (this.locked) {
-          return 'Unlock the participant.  Participant is currently locked.'
-        } else {
-          return 'Lock the participant.  Participant is currently unlocked.'
-        }
       }
     },
     methods: {
       updateInitiative: function (initiative) {
-        console.log('new initiative:', initiative)
-        console.log(initiative)
         this.$refs.initiative.value = initiative
         this.$emit('initiative', initiative)
       },
@@ -118,9 +67,6 @@
       },
       updateHp: function (hp) {
         this.$emit('hp', hp)
-      },
-      toggleLock: function () {
-        this.locked = !this.locked
       },
       triggerDelete: function () {
         if (this.deleting) {

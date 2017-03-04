@@ -1,46 +1,32 @@
 <template>
   <div class="hp-tracker" :class="{'has-error': errors.has('hp-value')}">
-    <template v-if="locked">
-      <div class="input-group">
-        <span class="input-group-addon" aria-label="Participant hitpoints" aria-live="polite">{{ isNaN(parseInt(hp)) ? 'invalid' : hp }}</span>
-        <input class="form-control"
-               ref="modifyHp"
-               aria-label="Modification to participant's hitpoints.  Press enter to subtract the modification or tab to reach modification actions"
-               data-toggle="tooltip"
-               data-placement="top"
-               title="Modification to participant's hitpoints"
-               placeholder="Modify HP"
-               @keyup.enter="subtractHp">
-        <div class="input-group-btn" role="group">
-          <button class="btn btn-default"
-                  name="subtract"
-                  aria-label="Subtract modifier from hitpoints"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Subtract modifier from hitpoints"
-                  @click="subtractHp"><span class="glyphicon glyphicon-minus"></span></button>
-          <button class="btn btn-default"
-                  name="add"
-                  aria-label="Add modifier to hitpoints"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Add modifier to hitpoints"
-                  @click="addHp"><span class="glyphicon glyphicon-plus"></span></button>
-        </div>
-      </div>
-    </template>
-    <template v-else>
+    <div class="input-group">
+      <span class="input-group-addon" aria-label="Participant hitpoints" aria-live="polite">{{ isNaN(parseInt(hp)) ? 'invalid' : hp }}</span>
       <input class="form-control"
-             aria-label="Participant hitpoints"
-             name="hp-value"
-             ref="hp"
-             :value="hp"
-             v-validate="'numeric'"
+             ref="modifyHp"
+             aria-label="Modification to participant's hitpoints.  Press enter to subtract the modification or tab to reach modification actions"
              data-toggle="tooltip"
              data-placement="top"
-             title="Participant hitpoints"
-             @input="updateHp($event.target.value)">
-    </template>
+             title="Modification to participant's hitpoints"
+             placeholder="Modify HP"
+             @keyup.enter="subtractHp">
+      <div class="input-group-btn" role="group">
+        <button class="btn btn-default"
+                name="subtract"
+                aria-label="Subtract modifier from hitpoints"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Subtract modifier from hitpoints"
+                @click="subtractHp"><span class="glyphicon glyphicon-minus"></span></button>
+        <button class="btn btn-default"
+                name="add"
+                aria-label="Add modifier to hitpoints"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Add modifier to hitpoints"
+                @click="addHp"><span class="glyphicon glyphicon-plus"></span></button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,10 +37,6 @@
       hp: {
         type: [Number, String],
         default: ''
-      },
-      locked: {
-        type: Boolean,
-        default: false
       }
     },
     data () {
@@ -95,13 +77,6 @@
             }
           })
         })
-      }
-    },
-    watch: {
-      'locked': function (val, oldVal) {
-        if (val === true) {
-          this.createTooltips()
-        }
       }
     },
     created: function () {
