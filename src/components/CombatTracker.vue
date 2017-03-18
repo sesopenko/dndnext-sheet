@@ -156,6 +156,7 @@
           hasTurn: false
         })
         this.refreshCurrentParticipantTurn()
+        this.sortParticipants()
       },
       sortParticipants: function () {
         this.participants.sort(function (a, b) {
