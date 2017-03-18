@@ -97,7 +97,7 @@
                      @delete="deleteParticipant(index)"></participant>
         <tr v-if="participants.length === 0">
           <td colspan="4">
-            <em>Press the <span class="glyphicon glyphicon-plus"></span> symbol above to add your first combat participant.</em>
+            <em>There are no participants.  Fill out a name, initiative, and hit points in the sectiona bove then click "Add Participant" to begin.</em>
           </td>
         </tr>
         </tbody>
