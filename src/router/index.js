@@ -4,6 +4,7 @@ import Home from 'components/Home'
 import Sheet from 'components/Sheet'
 import CombatTracker from 'components/CombatTracker'
 import Spells from 'components/Spells'
+import Monsters from 'components/Monsters'
 import License from 'components/License'
 
 Vue.use(Router)
@@ -34,6 +35,11 @@ export default new Router({
       path: '/spells',
       name: 'Spells',
       component: Spells
+    },
+    {
+      path: '/monsters',
+      name: 'Monsters',
+      component: Monsters
     }
   ]
 })
