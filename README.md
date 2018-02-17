@@ -12,7 +12,7 @@ Dungeons and Dragons 5th combat tracker & spell database.
 * Track the world time elapsed.
 * Save combat your encounter to your own browser's HTML5 Local Storage.
 * Browse and search for spells
-* Play D&D even if you're blind!  Strives for WCAD 2.0 compliance.
+* Play D&D even if you're blind!  Strives for WCAC 2.0 compliance.
 
 You can use the tracker at [http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/](http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/)
 
