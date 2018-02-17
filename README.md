@@ -1,29 +1,45 @@
 # dndnext-sheet
 
-> Dungeons and Dragons 5th edition character sheet
+[![Build Status](https://travis-ci.org/sesopenko/dndnext-sheet.svg?branch=master)](https://travis-ci.org/sesopenko/dndnext-sheet)
+
+Dungeons and Dragons 5th combat tracker & spell database.
+
+## Features
+
+* Track combat
+** Maintains initiative order.
+** Keep track of hitpoints during combat, entering damage & healing.
+** Tracks the world time elapsed.
+** Save combat encounter to your own browser's HTML5 Local Storage.
+* Search for spells
+** Quick filter by spell name
+* Strives for WCAG 2.0 for screen readers.  Blind people should be able to play, too!
+
+You can use the tracker at [http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/](http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/)
+
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+### install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+### serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
+### build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
+### build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
+### run unit tests
 npm run unit
 
-# run e2e tests
+### run e2e tests
 npm run e2e
 
-# run all tests
+### run all tests
 npm test
 ```
 

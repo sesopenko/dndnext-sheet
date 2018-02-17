@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - lts/*
+install:
+  - npm install
+script:
+  - yarn run build
+deploy:
+  provider: s3
+  skip_cleanup: true
+  access_key_id: AKIAILXINLAJF3AHIWQQ
+  secret_access_key:
+    secure: W3W4vZySuWGaFP+SOeMBmYz7kRSTamWG2Ep49r+0COI9aUFTOeLnL2gHbKyVJ4RRw/EgEESzcigehud2B0kt8wYQ0hcE3B2wLIZJJAyo2cX9oxffl1cRzSQqCCPSAqN39qSOPxR068sv/CbvW9oOaN3zi9+NoIdLCXUWoeyqNzkFa5NSKno/DmmLiAfcSVAA+54i4RaDRCUN3iaj2kMTxszIHKxNZa+o3TU9Jo6BTiEHp9tmmX/aslUtT1Z2jtydQqw0NQtqhm7pdnbC/E1QyCQTI11CCQKc7RxNSj3luEXxK+oLpWhqiLFp0ZgrpaAooBTo8/Oltp3l95ZGq9CznnmF+U8HAPxxf8kb6gDD04rPvpNL6zc+ro51NeZRa2HQNslQEvWfpO2ztwO9ewdQ7APAFEArAgusMbSllOLhyqfObsTfrqYvVOlv7oJJosiZbJPPKhV5snS57avFRG9FRRFlpqgTJdvCv6dlDS49YYMwevBc29kYYsOmrd9zEWK6Sqsy0tNQK6aHhV89w6vE75uZjdTOVB7sY6uRBL2fd6qjgyu6WvX5APQ7iTSw+ztNPDz7XBaRGghAsi7JFL0vH9uNaRcLVaDPwCLis3xg3+DJv5DcU2Zmtfo2SqRdtLsMRZ/kCgicoUU4JLNyPV+KKlf1vcegUI8fkYXGTvCX5+Q=
+  bucket: dndnext-sheet
+  local_dir: dist
+  acl: 'public_read'
+  on:
+    branch: master
+    repo: sesopenko/dndnext-sheet
