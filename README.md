@@ -7,13 +7,12 @@ Dungeons and Dragons 5th combat tracker & spell database.
 ## Features
 
 * Track combat
-** Maintains initiative order.
-** Keep track of hitpoints during combat, entering damage & healing.
-** Tracks the world time elapsed.
-** Save combat encounter to your own browser's HTML5 Local Storage.
-* Search for spells
-** Quick filter by spell name
-* Strives for WCAG 2.0 for screen readers.  Blind people should be able to play, too!
+* Maintain initiative order.
+* Keep track of hitpoints during combat, entering damage & healing.
+* Track the world time elapsed.
+* Save combat your encounter to your own browser's HTML5 Local Storage.
+* Browse and search for spells
+* Play D&D even if you're blind!  Strives for WCAD 2.0 compliance.
 
 You can use the tracker at [http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/](http://dndnext-sheet.s3-website-us-west-1.amazonaws.com/)
 
