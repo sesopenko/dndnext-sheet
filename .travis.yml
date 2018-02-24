@@ -1,19 +1,18 @@
 language: node_js
 node_js:
-  - lts/*
+- lts/*
 install:
-  - npm install
+- npm install
 script:
-  - npm run build
+- npm run build
 deploy:
   provider: s3
   skip_cleanup: true
-  access_key_id: AKIAILXINLAJF3AHIWQQ
+  access_key_id: AKIAIZPUTT2QS2CAQW3Q
   secret_access_key:
-    secure: W3W4vZySuWGaFP+SOeMBmYz7kRSTamWG2Ep49r+0COI9aUFTOeLnL2gHbKyVJ4RRw/EgEESzcigehud2B0kt8wYQ0hcE3B2wLIZJJAyo2cX9oxffl1cRzSQqCCPSAqN39qSOPxR068sv/CbvW9oOaN3zi9+NoIdLCXUWoeyqNzkFa5NSKno/DmmLiAfcSVAA+54i4RaDRCUN3iaj2kMTxszIHKxNZa+o3TU9Jo6BTiEHp9tmmX/aslUtT1Z2jtydQqw0NQtqhm7pdnbC/E1QyCQTI11CCQKc7RxNSj3luEXxK+oLpWhqiLFp0ZgrpaAooBTo8/Oltp3l95ZGq9CznnmF+U8HAPxxf8kb6gDD04rPvpNL6zc+ro51NeZRa2HQNslQEvWfpO2ztwO9ewdQ7APAFEArAgusMbSllOLhyqfObsTfrqYvVOlv7oJJosiZbJPPKhV5snS57avFRG9FRRFlpqgTJdvCv6dlDS49YYMwevBc29kYYsOmrd9zEWK6Sqsy0tNQK6aHhV89w6vE75uZjdTOVB7sY6uRBL2fd6qjgyu6WvX5APQ7iTSw+ztNPDz7XBaRGghAsi7JFL0vH9uNaRcLVaDPwCLis3xg3+DJv5DcU2Zmtfo2SqRdtLsMRZ/kCgicoUU4JLNyPV+KKlf1vcegUI8fkYXGTvCX5+Q=
+    secure: xW//xAZqSZk2XGtQ8vOEEeogdXUfAPqMrybtIr24l6ShRMTIhi4OOJP7Y+dKL6CoFW5A9a+LjiJMP+KeJQFsdtTFIVHlM269zU1K18kxnO2xv1qs0V//OGK2oqF9PX0i0hSGpADza/BWqlDGYgkPInSE+QKt27f/OhkSX8oJzvkHKTyZK5R9QG3DzOhoaYYm6+CBUDBRrnQ06ka4Oy4t4eD3Ej7Z0gTtM0ZRiP7rcV3kfI/+EPKrgQzbn7rAICLM9zaUE4vJrPnDywfS63jhqiOq77nLJLa9LNjwETZ0iSHcPby806xOilKI5b0p+29lkWVUEtg0bQKg7cwzfpCJarxGn+QxxZY+Rhv9bo06+JgfNG2nrjKxqcp010GVB+71dxCm6ajhne43rnmLo8zkTmYujNtqe1SvKKX8+DxFZ9yUnNvh3LwO9rIRKQeNNFc3zS6huDcxz24r2uqoqUL+yPzIbR1kpQAi631f7X7b7pGC44lO8nMgecLlH/OCdcy1zI76gs6iQa7+5tiOYKCRlfudmxb91CCCwhy+QtcaFihPkl18LKtGM7QH4R099s6xoI4t+BV4EJDtofF19qdbodarTnvrcZuYIc6ZmF9EfaJ3qNIypO5sAUYOm6IANoNyB5FnK65f6UEUKL1ZzhDpxnCrxHsU5wS1+66NqgCEVHA=
   bucket: dndnext-sheet
   local_dir: dist
   acl: 'public_read'
   on:
-    branch: master
     repo: sesopenko/dndnext-sheet
