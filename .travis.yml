@@ -15,4 +15,5 @@ deploy:
   local_dir: dist
   acl: 'public_read'
   on:
+    branch: master
     repo: sesopenko/dndnext-sheet
